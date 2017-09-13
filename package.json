@@ -1,0 +1,20 @@
+{
+  "name": "ex_app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.0",
+    "cookie": "^0.3.1",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.15.4",
+    "jade": "^1.11.0",
+    "multer": "^1.3.0",
+    "orientjs": "^2.2.6"
+  }
+}
