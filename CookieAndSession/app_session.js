@@ -3,8 +3,8 @@ const app = express()
 const bodyParser = require('body-parser')
 var session = require('express-session'),
     OrientoStore = require('connect-oriento')(session);
-
-
+const md5 =require('md5')
+const salt = '@d&3nd8sJd1hd%$#@'
 app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(session({
@@ -53,7 +53,7 @@ app.get('/auth/logout',function(req,res){
 })
 app.post('/auth/login',function(req,res){
 	let selectedUser = user.find(elem=>{return elem.id===req.body.id})
-	if(req.body.id === selectedUser.id && req.body.password === selectedUser.password){
+	if(req.body.id === selectedUser.id && md5(req.body.password) === selectedUser.password){
 		req.session.name = selectedUser.name
 		console.log(req.session)
 		res.redirect('/welcome')
@@ -92,7 +92,7 @@ app.post('/auth/register',function(req,res){
 	if(id&&password&&name){
 		user.push({
 			id:id,
-			password:password,
+			password:md5(password),
 			name:name
 		})
 		console.log(user[1])
